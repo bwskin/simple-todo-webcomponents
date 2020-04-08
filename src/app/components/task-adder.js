@@ -47,14 +47,13 @@ class TaskAdder extends LitElement {
     checkKey(event) {
         if(event.keyCode == 13) {
             this.add()
-            event.target.value = "";
             event.preventDefault()
         }
-        console.log(event)
     }
 
     add() {
         this.dispatchEvent(new CustomEvent("taskAdd", {detail:{value:this.shadowRoot.querySelector('input').value}}))
+        this.shadowRoot.querySelector('input').value = ""
     }
 }
 
